@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Puzzle.Pages.FirstPage"
+             Title="">
+    <ContentPage.Resources>
+        <Style TargetType="Button" BasedOn="{StaticResource button}">
+            <Setter Property="Margin" Value="0,8"/>
+
+        </Style>
+    </ContentPage.Resources>
+    <VerticalStackLayout MaximumWidthRequest="300">
+
+        <HorizontalStackLayout Margin="0,24,0,12" HorizontalOptions="Center">
+            <Label x:Name="user" FontSize="Title"/>
+            <Label x:Name="party" FontSize="Subtitle" VerticalOptions="Center"/>
+        </HorizontalStackLayout>
+
+        <Grid ColumnDefinitions="auto,*">
+            <Image Source="logo.png" MaximumHeightRequest="40"/>
+            <Button Grid.Column="1" Text="Play" Clicked="PlayClick" HorizontalOptions="Fill" Margin="8,0,0,0"/>
+        </Grid>
+        <Button Text="Interface Settings" Clicked="ThemeClick"/>
+        <Button Text="User Settings" Clicked="UserClick"/>
+        <Button Text="Close App" Clicked="CloseClick"/>
+
+    </VerticalStackLayout>
+</ContentPage>

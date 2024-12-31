@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:Puzzle.Pages"
+             xmlns:repo="clr-namespace:Puzzle.Repo"
+             x:Class="Puzzle.Pages.UserPage"
+             x:DataType="pages:UserPage"
+             Title="Play Setting">
+    <Grid RowDefinitions="auto,*">
+        <VerticalStackLayout>
+            <Grid >
+                <Label x:Name="username" FontSize="Title" Margin="12,0"/>
+                <Label Text="Level" FontSize="25" HorizontalOptions="Center"/>
+            </Grid>
+            <VerticalStackLayout x:Name="group" HorizontalOptions="Center"
+                              RadioButtonGroup.GroupName="level">
+                <RadioButton Content="Easy, no limits" Value="Easy"/>
+                <RadioButton Content="Default, 10 min" Value="Default"/>
+                <RadioButton Content="Hard, 5 min" Value="Hard"/>
+            </VerticalStackLayout>
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Button Text="Save" Clicked="SaveClick"  Margin="12,0"/>
+                <Button Text="Close" Clicked="CloseClick"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+
+        <Grid Grid.Row="1" RowDefinitions="auto,*,auto" Margin="8,12,0,0">
+
+            <Grid ColumnDefinitions="125,60,45,50,60,65,50,*" Margin="0,0,0,4">
+                <Label Text="Date"/>
+                <Label Grid.Column="1" Text="Result"/>
+                <Label Grid.Column="2" Text="Time"/>
+                <Label Grid.Column="3" Text="Word"/>
+                <Label Grid.Column="4" Text="Level"/>
+                <Label Grid.Column="5" Text="Result"/>
+                <Label Grid.Column="6" Text="Steps"/>
+                <Border Grid.ColumnSpan="10"/>
+            </Grid>
+            
+            <ListView Grid.Row="1" ItemsSource="{Binding Items}" >
+                <ListView.Resources>
+                    <Style TargetType="Label" BasedOn="{StaticResource label}">
+                        <Setter Property="FontSize" Value="12"/>
+                    </Style>
+                </ListView.Resources>
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="repo:GameInfo">
+                        <ViewCell>
+                            <Grid ColumnDefinitions="125,60,45,50,60,65,50">
+                                <Label Text="{Binding Date}"/>
+                                <Label Grid.Column="1" Text="{Binding Result}"/>
+                                <Label Grid.Column="2" Text="{Binding DisplayTime}"/>
+                                <Label Grid.Column="3" Text="{Binding Word}"/>
+                                <Label Grid.Column="4" Text="{Binding Level}"/>
+                                <Label Grid.Column="5" Text="{Binding Result}"/>
+                                <Label Grid.Column="6" Text="{Binding Steps}"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Grid.Row="2" Text="Clear history" Clicked="ClearClick" Margin="0,0,0,12" HorizontalOptions="Center"/>
+        </Grid>
+    </Grid>
+</ContentPage>

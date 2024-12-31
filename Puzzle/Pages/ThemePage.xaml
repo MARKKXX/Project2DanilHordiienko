@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:t="clr-namespace:Microsoft.Maui.ApplicationModel;assembly=Microsoft.Maui.Essentials"
+             x:Class="Puzzle.Pages.ThemePage"
+             Title="Color Theme">
+    <VerticalStackLayout x:Name="group" HorizontalOptions="Center"
+                         RadioButtonGroup.GroupName="theme">
+        <RadioButton CheckedChanged="RadioClick" Content="Default" Value="{x:Static t:AppTheme.Unspecified}"/>
+        <RadioButton CheckedChanged="RadioClick" Content="Light" Value="{x:Static t:AppTheme.Light}"/>
+        <RadioButton CheckedChanged="RadioClick" Content="Dark" Value="{x:Static t:AppTheme.Dark}"/>
+        <HorizontalStackLayout Margin="0,12">
+            <Button Text="Save" Clicked="SaveClick" Margin="12,0"/>
+            <Button Text="Close" Clicked="CloseClick"/>
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>
